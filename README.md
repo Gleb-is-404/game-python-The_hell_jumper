@@ -1,2 +1,2 @@
-# The_hell_jumper
+# python/game/The_hell_jumper
 dynamic game
