@@ -18,20 +18,22 @@ class Hell_jamper_Screen(agent_R_M_D, lazer, cannon_ball, fone_hell):
 		self.Agent_R_M_D = agent_R_M_D(self)
 		self.lazer = lazer(self)
 		self.cannon_ball = cannon_ball(self)
+		self.ntt = (self.lazer, self.cannon_ball)  
 	def run(self):
 		while True:
 			self._check_events()
 			self._update_screen()
+			self.fone_hell.update()
 			self.Agent_R_M_D.update()			
 			self.lazer.update()
 			self.cannon_ball.update()
 	def _check_events(self):
 		if self.Agent_R_M_D.rect.bottom > self.Agent_R_M_D.screen_rect.bottom:
 			self.dethe()
-		if self.Agent_R_M_D.rect.top < self.lazer.rect.bottom and self.Agent_R_M_D.rect.bottom > self.lazer.rect.top and self.lazer.act:
-			self.dethe()
-		if self.Agent_R_M_D.rect.top < self.cannon_ball.rect.bottom and self.Agent_R_M_D.rect.bottom > self.cannon_ball.rect.top and self.Agent_R_M_D.rect.left < self.cannon_ball.rect.right and self.Agent_R_M_D.rect.right > self.cannon_ball.rect.left and self.cannon_ball.act:
-			self.dethe()
+		for self.a in self.ntt:
+			print(self.a)
+			if self.Agent_R_M_D.rect.top < self.a.rect.bottom and self.Agent_R_M_D.rect.bottom > self.a.rect.top and self.Agent_R_M_D.rect.left < self.a.rect.right and self.Agent_R_M_D.rect.right > self.a.rect.left and self.a.act:
+				self.dethe()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()
@@ -46,7 +48,6 @@ class Hell_jamper_Screen(agent_R_M_D, lazer, cannon_ball, fone_hell):
 			self.Agent_R_M_D.moving_left = False
 		if event.key == pygame.K_UP:
 			self.Agent_R_M_D.jamp = False
-			self.settings.grav = self.settings.grav / 1.5
 		if event.key == pygame.K_DOWN:
 			self.Agent_R_M_D.speeds = False
 	def event_KEYDOWN(self, event):
@@ -66,10 +67,6 @@ class Hell_jamper_Screen(agent_R_M_D, lazer, cannon_ball, fone_hell):
 		self.settings.grav = 0
 		self.Agent_R_M_D.jamp = False
 	def _update_screen(self):
-		self.fone_hell.blitme()
-		self.Agent_R_M_D.blitme()
-		self.cannon_ball.blitme()
-		self.lazer.blitme()
 		pygame.display.flip()
 ai = Hell_jamper_Screen()
 ai.run()
