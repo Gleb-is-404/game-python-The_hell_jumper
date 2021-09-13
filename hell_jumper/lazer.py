@@ -35,6 +35,7 @@ class lazer:
         if self.z == 400:
                self.z = 0
         self.z += 1
+        self.screen.blit(self.image, self.rect)
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
