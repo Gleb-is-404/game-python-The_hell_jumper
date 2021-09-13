@@ -31,7 +31,6 @@ class Hell_jamper_Screen(agent_R_M_D, lazer, cannon_ball, fone_hell):
 		if self.Agent_R_M_D.rect.bottom > self.Agent_R_M_D.screen_rect.bottom:
 			self.dethe()
 		for self.a in self.ntt:
-			print(self.a)
 			if self.Agent_R_M_D.rect.top < self.a.rect.bottom and self.Agent_R_M_D.rect.bottom > self.a.rect.top and self.Agent_R_M_D.rect.left < self.a.rect.right and self.Agent_R_M_D.rect.right > self.a.rect.left and self.a.act:
 				self.dethe()
 		for event in pygame.event.get():
