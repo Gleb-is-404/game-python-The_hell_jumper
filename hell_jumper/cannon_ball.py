@@ -31,6 +31,7 @@ class cannon_ball:
             self.ad = 0
         self.rect.x = self.x
         self.rect.y = self.y
+        self.screen.blit(self.image, self.rect)
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
