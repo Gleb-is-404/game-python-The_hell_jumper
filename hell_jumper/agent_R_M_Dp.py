@@ -38,8 +38,9 @@ class agent_R_M_D:
         if self.gravety == True:
             self.y += self.settings.grav
             if self.settings.grav < 4:
-                self.settings.grav += 0.01
+                self.settings.grav += 0.02
                 self.settings.grav = round(self.settings.grav, 2)
+        self.screen.blit(self.image, self.rect)
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
