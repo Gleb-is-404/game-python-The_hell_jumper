@@ -18,7 +18,7 @@ class Hell_jamper_Screen(agent_R_M_D, lazer, cannon_ball, fone_hell):
 		self.Agent_R_M_D = agent_R_M_D(self)
 		self.lazer = lazer(self)
 		self.cannon_ball = cannon_ball(self)
-		self.ntt = (self.lazer, self.cannon_ball)  
+		self.NTT = (self.lazer, self.cannon_ball) 
 	def run(self):
 		while True:
 			self._check_events()
@@ -30,9 +30,9 @@ class Hell_jamper_Screen(agent_R_M_D, lazer, cannon_ball, fone_hell):
 	def _check_events(self):
 		if self.Agent_R_M_D.rect.bottom > self.Agent_R_M_D.screen_rect.bottom:
 			self.dethe()
-		for self.a in self.ntt:
-			if self.Agent_R_M_D.rect.top < self.a.rect.bottom and self.Agent_R_M_D.rect.bottom > self.a.rect.top and self.Agent_R_M_D.rect.left < self.a.rect.right and self.Agent_R_M_D.rect.right > self.a.rect.left and self.a.act:
-				self.dethe()
+		for self.ntt in self.NTT:
+				if self.Agent_R_M_D.rect.colliderect(self.ntt.rect) and self.ntt.act:
+					self.dethe()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()
