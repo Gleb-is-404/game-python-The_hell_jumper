@@ -1,6 +1,7 @@
 import pygame
 import time
 from random import randint
+from agent_R_M_Dp import agent_R_M_D
 class cannon_ball:
     """A class to manage the ship."""
     def __init__(self, ai_game):
@@ -19,6 +20,7 @@ class cannon_ball:
         self.ad = 0
         self.z = 0
         self.act = True
+        self.Agent_R_M_D = agent_R_M_D(self)
     def update(self):
         if self.rect.bottom >= self.screen_rect.bottom:
             self.y = randint(0, 300)
@@ -32,6 +34,11 @@ class cannon_ball:
         self.rect.x = self.x
         self.rect.y = self.y
         self.screen.blit(self.image, self.rect)
+    def dethe(self):
+        self.Agent_R_M_D.x = self.settings.width / 2
+        self.Agent_R_M_D.y = -(self.settings.height) + 800
+        self.settings.grav = 0
+        self.Agent_R_M_D.jamp = False
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
