@@ -5,5 +5,3 @@ class Settings():
 		self.height = 700
 		self.speed = 2
 		self.name = 'Hell jumper'
-		self.grav = 1
-		
